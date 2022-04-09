@@ -665,7 +665,8 @@
 \RequirePackage{fancyhdr}
 
 \setlength{\headheight}{15pt}
-\renewcommand{\headrule}{\hrule height 0.5pt \vspace{0.8pt}\hrule height 0.5pt}
+% !!!
+\renewcommand{\headrule}{\vspace{3pt}\hrule height 0.5pt \vspace{1pt}\hrule height 0.5pt}
 \renewcommand{\headrulewidth}{0.65pt}
 \renewcommand{\footrulewidth}{0pt}
 
@@ -700,9 +701,41 @@
 \titleformat{\subsubparagraph}[block]
   {\fontsize{12pt}{12pt}\selectfont}{（\alph{subsubparagraph}）}{3pt}{}
 
-\titlespacing{\chapter}{0pt}{-\baselineskip}{4pt}
-\titlespacing{\section}{0pt}{12pt}{6pt}
-\titlespacing{\subsection}{2em}{6pt}{0pt}
+% \titlespacing{\chapter}{0pt}{-\baselineskip}{4pt}
+% \titlespacing{\section}{0pt}{12pt}{6pt}
+% \titlespacing{\subsection}{2em}{6pt}{0pt}
+% \titlespacing{\subsubsection}{2em}{4pt}{0pt}
+% \titlespacing{\paragraph}{2em}{4pt}{0pt}
+% \titlespacing{\subparagraph}{2em}{4pt}{0pt}
+% \titlespacing{\subsubparagraph}{2em}{4pt}{0pt}
+
+% !!!restore the original interval
+% \titleformat{\chapter}[block]
+%   {\centering\fontsize{16pt}{16pt}\selectfont\thispagestyle{fancy}}{\arabic{chapter}}{1em}{}
+% \titleformat{\section}[block]
+%   {\fontsize{15pt}{15pt}\selectfont}{\arabic{chapter}.\arabic{section}}{7pt}{}
+% \titleformat{\subsection}[block]
+%   {\fontsize{14pt}{14pt}\selectfont}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}{7pt}{}
+% \titleformat{\subsubsection}[block]
+%   {\fontsize{12pt}{12pt}\selectfont}{\arabic{subsubsection}）}{6pt}{}
+% \titleformat{\paragraph}[block]
+%   {\fontsize{12pt}{12pt}\selectfont}{（\arabic{paragraph}）}{6pt}{}
+% \titleformat{\subparagraph}[block]
+%   {\fontsize{12pt}{12pt}\selectfont}{\alph{subparagraph}）}{6pt}{}
+% \titleformat{\subsubparagraph}[block]
+%   {\fontsize{12pt}{12pt}\selectfont}{（\alph{subsubparagraph}）}{6pt}{}
+
+% \titlespacing{\chapter}{0pt}{0mm}{14pt}
+% \titlespacing{\section}{0pt}{18pt}{6pt}
+% \titlespacing{\subsection}{2em}{12pt}{6pt}
+% \titlespacing{\subsubsection}{2em}{12pt}{6pt}
+% \titlespacing{\paragraph}{2em}{12pt}{6pt}
+% \titlespacing{\subparagraph}{2em}{12pt}{6pt}
+% \titlespacing{\subsubparagraph}{2em}{12pt}{6pt}
+
+\titlespacing{\chapter}{0pt}{0mm}{14pt}
+\titlespacing{\section}{0pt}{18pt}{6pt}
+\titlespacing{\subsection}{2em}{12pt}{2pt}
 \titlespacing{\subsubsection}{2em}{4pt}{0pt}
 \titlespacing{\paragraph}{2em}{4pt}{0pt}
 \titlespacing{\subparagraph}{2em}{4pt}{0pt}
@@ -910,7 +943,7 @@
 %%% 题名页 %%%
 \newcommand{\zhasscociateinfo}{
   \ifthenelse{\equal{\zh@theadvisorassociate}{\chinesespace}}{
-    \ifthenelse{\equal{\zh@theadvisorteam}{\chinesespace}}{ }{
+    \ifthenelse{\equal{\zh@theadvisorteam}{\chinesespace}}{~}{
       导师团队：\zh@theadvisorteam\linebreak
     }
   }{
@@ -919,7 +952,7 @@
 }
 \newcommand{\enasscociateinfo}{
   \ifthenelse{\equal{\en@theadvisorassociate}{\chinesespace}}{
-    \ifthenelse{\equal{\en@theadvisorteam}{\chinesespace}}{ }{
+    \ifthenelse{\equal{\en@theadvisorteam}{\chinesespace}}{~}{
       Supervisor Team: \en@theadvisorteam\linebreak
     }
   }{
@@ -935,7 +968,8 @@
   \fi
   \parbox[t][1.2cm]{2.5cm}{}
   \begin{center}
-    \includegraphics[width=8cm]{Materials/Icons/XJTU.pdf} \\[1.7cm]
+    % !!!
+    \includegraphics[width=8cm]{Materials/Icons/XJTU.pdf} \\[0.7cm]
     \fontsize{22pt}{22pt}\selectfont \chinesedegreename 学位论文\\
     \vskip 3.5cm
     \sanhao {\bfseries \zh@thetitle}\\
@@ -955,8 +989,10 @@
   \else
     \pdfbookmark{Title Page}{Title Page (English)}
   \fi
+  % !!!
+  \parbox[t][0.7cm]{2.5cm}{}
   \begin{center}
-    \vskip 1.2cm
+    % \vskip 1.2cm
     \sanhao {\bfseries \en@thetitle}\\
     \vskip 3.5cm
     \begin{spacing}{2}\sanhao
@@ -966,7 +1002,8 @@
       for the degree of\\
       \en@thedegree\\
     \end{spacing}
-    \vskip 6cm
+    % \vskip 6cm
+    \vfill
     \begin{spacing}{2}\sanhao
       By\\
       \en@theauthor\\
@@ -1039,13 +1076,17 @@
   \begin{center}
     \sanhao \bfseries \chinesedegreename 学位论文答辩委员会
   \end{center}
-  \vspace{2\baselineskip}
+  % !!!
+  % \vspace{2\baselineskip}
+  \vspace{1.05\baselineskip}
   \begin{spacing}{2.0}\begin{center}
     \sanhao \bfseries \zh@thetitle
   \end{center}\end{spacing}
-  \vfill
+  % \vfill
+  \vskip 5.5cm
   \begin{center}
-    \renewcommand{\arraystretch}{2.5}
+    % !!!
+    \renewcommand{\arraystretch}{2.1}
     \begin{tabular}{rl}
       \multicolumn{1}{l}{\sanhao 答辩人：\zh@theauthor}&\\
       \multicolumn{1}{l}{\sanhao 答辩委员会委员：}&\\
@@ -1068,6 +1109,7 @@
   \else
     \pdfbookmark{摘~~~~要}{ABSTRACT (Chinese)}
   \fi
+  % !!!
   % \setlength{\parskip}{0.25\baselineskip}
   \chapter*{摘~~~~要}
 
@@ -1092,6 +1134,8 @@
   \hypersetup{bookmarksdepth=2}
   \markboth{ABSTRACT}{ABSTRACT}
   \setlength{\parindent}{0em}
+  % !!!
+  \setlength{\parskip}{0.3\baselineskip}
 }{}
 
 \newcommand{\keywordswithtype}[4]{
@@ -1144,9 +1188,10 @@
 % 目录前后距离
 \renewcommand{\cftchapfont}{}
 \renewcommand{\cftchappagefont}{}
-\setlength{\cftbeforechapskip}{3pt}
-\setlength{\cftbeforesecskip}{3pt}
-\setlength{\cftbeforesubsecskip}{3pt}
+% !!!
+\setlength{\cftbeforechapskip}{3.6pt}
+\setlength{\cftbeforesecskip}{3.6pt}
+\setlength{\cftbeforesubsecskip}{3.6pt}
 
 \cftsetindents{chap}{0em}{0.9em}
 \cftsetindents{sec}{1em}{1.5em}
@@ -1163,7 +1208,9 @@
   \fi
   \chapter*{
     \contentsname
-    \vspace{2.4mm}
+    % !!!
+    % \vspace{2.4mm}
+    \vspace{2.3mm}
     \@mkboth{
       \MakeUppercase\contentsname
     }{\MakeUppercase\contentsname}}
@@ -1183,7 +1230,8 @@
   \fi
   \chapter*{
     \engcontentsname
-    \vspace{1.4mm}
+    % !!!
+    \vspace{1.0mm}
     \@mkboth{
       \MakeUppercase\engcontentsname
     }{\MakeUppercase\engcontentsname}}
@@ -1695,6 +1743,9 @@
   \pdfbookmark{\thesisoriginalitytitle}{Declarations}
   \chaptermark{\thesisoriginalitytitle}
   \fancyfoot[]{}
+
+  % !!!
+  \hspace*{\fill}
 
   \begin{center}
   \sanhao 学位论文独创性声明（1）
